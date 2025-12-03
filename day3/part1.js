@@ -21,17 +21,17 @@ const solution = (data) => {
 
   data.forEach((item) => {
     const bank = item.split('');
-    const { maxDigit, maxIndex } = findMaxIndex(bank);
+    let slicedBank = bank.slice(0, bank.length - 1);
 
-    if (maxIndex === bank.length - 1) {
-      const { maxDigit: secondMaxDigit } = findMaxIndex(bank.slice(0, maxIndex));
-      const jolt = Number(`${secondMaxDigit}${maxDigit}`);
-      result += jolt;
-    } else {
-      const { maxDigit: secondMaxDigit } = findMaxIndex(bank.slice(maxIndex + 1));
-      const jolt = Number(`${maxDigit}${secondMaxDigit}`);
-      result += jolt;
-    }
+    // 첫번째 숫자
+    const { maxDigit, maxIndex } = findMaxIndex(slicedBank);
+    let jolt = `${maxDigit}`;
+
+    // 두번째 숫자
+    const { maxDigit: secondMaxDigit } = findMaxIndex(bank.slice(maxIndex + 1));
+    jolt = `${jolt}${secondMaxDigit}`;
+
+    result += Number(jolt);
   });
 
   return result;
