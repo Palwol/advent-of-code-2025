@@ -1,6 +1,6 @@
 import { data } from './output.js';
 
-const testData = [
+export const testData = [
   ['.', '.', '@', '@', '.', '@', '@', '@', '@', '.'],
   ['@', '@', '@', '.', '@', '.', '@', '.', '@', '@'],
   ['@', '@', '@', '@', '@', '.', '@', '.', '@', '@'],
@@ -13,7 +13,7 @@ const testData = [
   ['@', '.', '@', '.', '@', '@', '@', '.', '@', '.'],
 ];
 
-const getIsAccessible = (data, x, y) => {
+export const getIsAccessible = (data, x, y) => {
   if (data[y][x] === '.') return false;
 
   const xBoundary = data[0].length;
